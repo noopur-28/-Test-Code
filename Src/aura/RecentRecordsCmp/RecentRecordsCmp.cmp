@@ -1,0 +1,18 @@
+<aura:component controller="RecentRecordsController">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:attribute name="accountList" type="Account[]" description="List to store Accounts"/>
+    <aura:attribute name="Spinner" type="boolean"
+                    description="Boolean attribute to show/hide spinner"/>
+    
+    <lightning:card title = "Account List">     
+        <aura:if isTrue="{!v.Spinner}">
+            <lightning:spinner alternativeText="Loading" size="medium" />
+        </aura:if>
+        <ul class="slds-list--dotted">
+            <aura:iteration var="account" items="{!v.accountList}" >
+                <li>{!account.Name}</li>
+            </aura:iteration>
+        </ul>
+    </lightning:card>
+</aura:component>
